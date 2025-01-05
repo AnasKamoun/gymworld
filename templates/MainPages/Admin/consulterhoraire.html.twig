@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Horaires
+{% endblock %}
+{% block body %}
+    <div style="background-color: #151515">
+        {{ render(controller('App\\Controller\\PublicController::timeComponentTable')) }}
+        <button class="btn btn-info"
+                style="position:relative;bottom: 8vh;left: 20vw"
+        >
+            <a class="text-decoration-none text-white"
+               href="{{ path('consulteractivite') }}">Ajout
+                Activite</a>
+        </button>
+    </div>
+
+
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap"
+          rel="stylesheet"/>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/barfiller.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/slicknav.min.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"
+          type="text/css"/>
+    <style>
+        a {
+            color: white;
+
+            &.active {
+                color: orangered;
+            }
+        }
+
+    </style>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.barfiller.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        var tds = document.querySelectorAll('td');
+        tds.forEach(td => {
+            if (!td.classList.contains('class-time')) {
+                td.addEventListener('click', function () {
+                    var id = td.getAttribute('data-id');
+                    window.location.href = '/admin/dashboard/activite/' +
+                        id + '?jour=' + td.getAttribute('data-jour') + '&heure=' + td
+                            .getAttribute('data-debut');
+                });
+            }
+        });
+    </script>
+{% endblock %}

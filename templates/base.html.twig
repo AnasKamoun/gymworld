@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="{{ asset('assets/images/gym.png') }}">
+    <meta name="description" content="Gym Management System">
+    <meta name="keywords" content="Gym, Management, System">
+    {% block stylesheets %}
+        <link rel="stylesheet"
+
+              href="{{ asset('/node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    {{include('public/errors-success.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>
